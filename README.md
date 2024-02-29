@@ -4,7 +4,7 @@ Bake a cake!
 
 ## Usage
 
-cake-bake -l <layers> -c <candles> -h <candle height> -w <cake width>
+cake-bake -l \<layers\> -c \<candles\> -h \<candle height\> -w \<cake width\>
 
 ## Compilation
 
