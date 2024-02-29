@@ -4,6 +4,8 @@
 
 using namespace std;
 
+
+// Python-like string multiplication
 string operator*(const string& s, size_t n) {
     string result;
     result.reserve(s.size()*n);
@@ -30,30 +32,30 @@ string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, int cak
     string cake = "";
     int cake_length = layer1.length();
     char candle_top = '*';
-    string candle_layer = "|";
+    string candle_stick = "|";
     
-    // Adjust the calculation for equal spacing of candles, ensuring one at start and end
+    
     int spaces = candles - 1; // Spaces between candles
     int total_spacing = cake_width - candles; // Total space to distribute between candles
-    int space_between_candles = spaces > 0 ? total_spacing / spaces : 0; // Avoid division by zero
+    int space_between_candles = spaces > 0 ? total_spacing / spaces : 0;
 
 
-    // Add candle tops with equal spacing
+    // Add candle tops
     for (int i = 0; i < cake_width; i++) {
         if (i % (space_between_candles + 1) == 0 && candles > 0) {
             cake += candle_top;
-            candles--; // Decrement candles after placing each to ensure correct placement
+            candles--; 
         } else {
             cake += " ";
         }
     }
     cake += "\n";
 
-    // Add candle layers
+    // Add candle sticks
     for (int j = 0; j < candle_height; j++) {
         for (int i = 0; i < cake_width; i++) {
-            if (i % (space_between_candles + 1) == 0 && candles > 0) { // Use the initial candle count for reference if needed
-                cake += candle_layer;
+            if (i % (space_between_candles + 1) == 0) { 
+                cake += candle_stick;
             } else {
                 cake += " ";
             }
@@ -78,7 +80,6 @@ string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, int cak
 
 
 int main(int argc, char const *argv[]) {
-    // Your code here
     int layers = 3;
     int candles = 6;
     int candle_height = 2;
