@@ -6,7 +6,7 @@
 std::string operator*(std::string_view s, int n) {
     std::string result;
     result.reserve(s.length()*n);
-    for(size_t i = 0; i < n; ++i) {
+    for(int i = 0; i < n; ++i) {
         result += s;
     }
     return result;
