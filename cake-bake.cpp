@@ -1,22 +1,19 @@
 #include <iostream>
 #include <string>
-#include <cmath>
+#include <string_view>
 
-using namespace std;
-
-
-// Python-like string multiplication
-string operator*(const string& s, size_t n) {
-    string result;
-    result.reserve(s.size()*n);
-    for(size_t i = 0; i < n; ++i) {
+//python-like string multiplication
+std::string operator*(std::string_view s, int n) {
+    std::string result;
+    result.reserve(s.length()*n);
+    for(int i = 0; i < n; ++i) {
         result += s;
     }
     return result;
 }
 
-string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, int cake_width = 40) {
-    string cakeRecipe = 
+std::string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, int cake_width = 40) {
+    std::string cakeRecipe = 
     "\nTo make a simple cake, you will need some flour, sugar, eggs, and butter.\n"
     "1. Mix the flour and sugar together in a large bowl.\n"
     "2. In another bowl, beat the eggs and then mix them with melted butter.\n"
@@ -25,15 +22,17 @@ string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, int cak
     "5. Bake in a preheated oven until the cake is golden and a toothpick inserted into the center comes out clean.\n"
     "6. Let it cool before serving. Enjoy your cake!\n\n";
 
-    string layer1 = string("#/")*floor(cake_width/2);
-    string layer2 = string("/#")*floor(cake_width/2);
+    int half_cake_width {cake_width/2};
+
+    std::string layer1 = std::string_view("#/")*half_cake_width;
+    std::string layer2 = std::string_view("/#")*half_cake_width;
 
 
-    string cake = "";
+    std::string cake = "";
     int cake_length = layer1.length();
     char candle_top = '*';
-    string candle_stick = "|";
-    
+    std::string candle_stick = "|";
+
     
     int spaces = candles - 1; // Spaces between candles
     int total_spacing = cake_width - candles; // Total space to distribute between candles
@@ -74,7 +73,7 @@ string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, int cak
         }
     }
 
-    cout << cakeRecipe << endl;
+    std::cout << cakeRecipe << '\n';
     return cake;
 }
 
@@ -86,26 +85,26 @@ int main(int argc, char const *argv[]) {
     int cake_width = 40;
 
     for(int i = 0; i < argc; i++){ 
-        char front = string(argv[i])[0];
+        char front = std::string(argv[i])[0];
         if (front == '-'){
-            char option = string(argv[i])[1];
+            char option = std::string(argv[i])[1];
             switch(option){
                 case 'l':
-                    layers = stoi(argv[i+1]);
+                    layers = std::stoi(argv[i+1]);
                     break;
                 case 'c':
-                    candles = stoi(argv[i+1]);
+                    candles = std::stoi(argv[i+1]);
                     break;
                 case 'h':
-                    candle_height = stoi(argv[i+1]);
+                    candle_height = std::stoi(argv[i+1]);
                     break;
                 case 'w':
-                    cake_width = stoi(argv[i+1]);
+                    cake_width = std::stoi(argv[i+1]);
                     break;
             }
             i++;
         }
     }
-    cout << cake_bake(layers, candles, candle_height, cake_width);
+    std::cout << cake_bake(layers, candles, candle_height, cake_width) << '\n';
     return 0;
 }
