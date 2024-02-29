@@ -2,7 +2,7 @@
 #include <string>
 #include <string_view>
 
-
+//python-like string multiplication
 std::string operator*(std::string_view s, int n) {
     std::string result;
     result.reserve(s.length()*n);
@@ -53,7 +53,7 @@ std::string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, in
     // Add candle layers
     for (int j = 0; j < candle_height; j++) {
         for (int i = 0; i < cake_width; i++) {
-            if (i % (space_between_candles + 1) == 0 && candles > 0) { // Use the initial candle count for reference if needed
+            if (i % (space_between_candles + 1) == 0) { 
                 cake += candle_stick;
             } else {
                 cake += " ";
