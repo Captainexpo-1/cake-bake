@@ -1,6 +1,6 @@
 # Cake Bake
 
-Bake a cake!
+Bake a cake blazingly 🔥 fast 🚀, written in 100% safe Rust. 🦀
 
 ## Usage
 
