@@ -31,7 +31,7 @@ std::string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, in
     std::string cake = "";
     int cake_length = layer1.length();
     char candle_top = '*';
-    std::string candle_layer = "|";
+    std::string candle_stick = "|";
     
     // Adjust the calculation for equal spacing of candles, ensuring one at start and end
     int spaces = candles - 1; // Spaces between candles
@@ -54,7 +54,7 @@ std::string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, in
     for (int j = 0; j < candle_height; j++) {
         for (int i = 0; i < cake_width; i++) {
             if (i % (space_between_candles + 1) == 0 && candles > 0) { // Use the initial candle count for reference if needed
-                cake += candle_layer;
+                cake += candle_stick;
             } else {
                 cake += " ";
             }
