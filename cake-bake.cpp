@@ -5,7 +5,7 @@
 #include <cstddef> //called implicitly for std::size_t
 
 
-std::string operator*(const std::string_view s, std::size_t n) {
+std::string operator*(std::string_view s, std::size_t n) {
     std::string result;
     result.reserve(s.length()*n);
     for(size_t i = 0; i < n; ++i) {
@@ -24,8 +24,10 @@ std::string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, in
     "5. Bake in a preheated oven until the cake is golden and a toothpick inserted into the center comes out clean.\n"
     "6. Let it cool before serving. Enjoy your cake!\n\n";
 
-    std::string layer1 = std::string_view("#/")*static_cast<std::size_t>(std::floor(cake_width/2));
-    std::string layer2 = std::string_view("/#")*static_cast<std::size_t>(std::floor(cake_width/2));
+    int half_cake_width {cake_width/2};
+
+    std::string layer1 = std::string_view("#/")*half_cake_width;
+    std::string layer2 = std::string_view("/#")*half_cake_width;
 
 
     std::string cake = "";
