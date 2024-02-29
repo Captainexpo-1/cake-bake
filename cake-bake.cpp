@@ -1,11 +1,9 @@
 #include <iostream>
 #include <string>
 #include <string_view>
-#include <cmath>
-#include <cstddef> //called implicitly for std::size_t
 
 
-std::string operator*(std::string_view s, std::size_t n) {
+std::string operator*(std::string_view s, int n) {
     std::string result;
     result.reserve(s.length()*n);
     for(size_t i = 0; i < n; ++i) {
