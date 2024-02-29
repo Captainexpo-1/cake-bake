@@ -2,13 +2,11 @@
 #include <string>
 #include <string_view>
 
-
 //python-like string multiplication
 std::string operator*(std::string_view s, int n) {
     std::string result;
     result.reserve(s.length()*n);
     for(int i = 0; i < n; ++i) {
-
         result += s;
     }
     return result;
