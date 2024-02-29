@@ -8,5 +8,6 @@ cake-bake -l \<layers\> -c \<candles\> -h \<candle height\> -w \<cake width\>
 
 ## Compilation
 
-Run `make`
+Run `make` to compile.
+
 To clean build, run `make clean`
