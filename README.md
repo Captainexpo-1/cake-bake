@@ -8,4 +8,5 @@ cake-bake -l \<layers\> -c \<candles\> -h \<candle height\> -w \<cake width\>
 
 ## Compilation
 
-Idk `g++ cake-bake.cpp -o cake-bake` or something
+Run `make`
+To clean build, run `make clean`
