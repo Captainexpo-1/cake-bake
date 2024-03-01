@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <string_view>
+#include <unistd.h>
 
 //python-like string multiplication
 std::string operator*(std::string_view s, int n) {
@@ -22,14 +23,13 @@ std::string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, in
     "5. Bake in a preheated oven until the cake is golden and a toothpick inserted into the center comes out clean.\n"
     "6. Let it cool before serving. Enjoy your cake!\n\n";
 
-    int half_cake_width {cake_width/2};
+    int half_cake_width = cake_width/2;
 
     std::string layer1 = std::string_view("#/")*half_cake_width;
     std::string layer2 = std::string_view("/#")*half_cake_width;
 
 
     std::string cake = "";
-    int cake_length = layer1.length();
     char candle_top = '*';
     std::string candle_stick = "|";
 
@@ -79,6 +79,11 @@ std::string cake_bake(int layers = 3, int candles = 6, int candle_height = 2, in
 
 
 int main(int argc, char const *argv[]) {
+    if (geteuid() != 0) {
+        std::cerr << "This program must be run as root.\n";
+        return 1;
+    }
+
     int layers = 3;
     int candles = 6;
     int candle_height = 2;
