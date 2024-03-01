@@ -1,12 +1,11 @@
 use std::process::exit;
-
-
+use is_root::is_root;
 
 fn cake_bake(layers: i32, candles_arg: i32, candle_height: i32, cake_width: i32) {
 
     let mut candles = candles_arg;
 
-    let cake_recipe = "\nTo make a simple cake, you will need some flour, sugar, eggs, and butter.\n+1. Mix the flour and sugar together in a large bowl.\n2. In another bowl, beat the eggs and then mix them with melted butter.\n3. Combine the egg mixture with the flour mixture and stir until smooth.\n4. Pour the batter into a greased baking pan.\n5. Bake in a preheated oven until the cake is golden and a toothpick inserted into the center comes out clean.\n6. Let it cool before serving. Enjoy your cake!\n\n";
+    let cake_recipe = "\nTo make a simple cake, you will need some flour, sugar, eggs, and butter.\n1. Mix the flour and sugar together in a large bowl.\n2. In another bowl, beat the eggs and then mix them with melted butter.\n3. Combine the egg mixture with the flour mixture and stir until smooth.\n4. Pour the batter into a greased baking pan.\n5. Bake in a preheated oven until the cake is golden and a toothpick inserted into the center comes out clean.\n6. Let it cool before serving. Enjoy your cake!\n\n";
     let even_layer = "#/".repeat((cake_width / 2) as usize);
     let odd_layer = "/#".repeat((cake_width / 2) as usize);
     let mut cake = String::new();
@@ -56,6 +55,14 @@ fn cake_bake(layers: i32, candles_arg: i32, candle_height: i32, cake_width: i32)
 }   
 
 fn main() {
+    // Make sure the user is root
+    if !is_root() {
+        println!("You must be root to run this program.");
+        exit(1);
+    }
+    println!("{}\n\n",users::get_current_uid());
+
+
     // Get args and pass to cake_bake
     
 
