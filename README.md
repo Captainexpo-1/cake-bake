@@ -8,6 +8,4 @@ Bake a cake blazingly 🔥 fast 🚀, written in 100% safe Rust. 🦀
 
 ## Compilation
 
-Run `make` to compile.
-
-To clean build, run `make clean`
+Run `cargo build` to compile. On 
